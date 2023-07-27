@@ -1,0 +1,38 @@
+spring:
+  config:
+    activate:
+      on-profile: sb
+name: sb
+environment: sandbox
+enabled: false
+#servers:
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+name: dev
+environment: development
+enabled: false
+#servers:
+
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+name: qa
+environment: testing
+enabled: false
+#servers:
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+name: prod
+environment: production
+enabled: true
+#servers:
