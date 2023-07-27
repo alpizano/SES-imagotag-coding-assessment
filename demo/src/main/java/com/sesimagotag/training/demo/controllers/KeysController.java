@@ -1,4 +1,4 @@
-package com.sesimagotag.training.demo;
+package com.sesimagotag.training.demo.controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
@@ -9,15 +9,17 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
+import com.sesimagotag.training.demo.utils.CipherUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@org.springframework.web.bind.annotation.RestController
-public class RestControllerForKeys {
+@RestController
+public class KeysController {
 
     @GetMapping("/")
     public String index() {

@@ -1,4 +1,4 @@
-package com.sesimagotag.training.demo;
+package com.sesimagotag.training.demo.controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sesimagotag.training.demo.entities.Item;
+import org.springframework.web.bind.annotation.RestController;
 
-@org.springframework.web.bind.annotation.RestController
-public class RestControllerForJavaTechnical {
+@RestController
+public class JavaTechnicalController {
 
     /* Can't be changed */
     private Map<String, Item> items = Collections.synchronizedMap(new LinkedHashMap<String, Item>());

@@ -1,20 +1,16 @@
-package com.sesimagotag.training.demo;
+package com.sesimagotag.training.demo.controllers;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.sesimagotag.training.demo.entities.Item;
 
-@org.springframework.web.bind.annotation.RestController
-public class RestControllerForItems {
+@RestController
+public class ItemsController {
 
     private final Map<String, Item> items = Collections.synchronizedMap(new HashMap<String, Item>());
 
