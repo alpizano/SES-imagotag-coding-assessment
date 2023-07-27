@@ -1,0 +1,141 @@
+###
+#Get hello
+GET http://localhost:8080/ 
+Content-Type: application/json
+
+# Greetings from Spring Boot!
+
+###
+#Create an item
+POST http://localhost:8080/api/v1/items
+Content-Type: application/json
+
+[
+    {"id":"aaa1", "price":4.54, "name":"5234"},
+    {"id":"aaa2", "price":2.54, "name":"3235"},
+    {"id":"aaa3", "price":1.54, "name":"1236"},
+    {"id":"aaa4", "price":3.54, "name":"5237"},
+    {"id":"aaa5", "price":5.66, "name":"2456"},
+    {"id":"aaa6", "price":5.66, "name":"1234"}
+]
+
+#First call 6, same one 0
+
+###
+# Get an item
+GET http://localhost:8080/api/v1/items/aaa1
+Content-Type: application/json
+
+# return aaa1 item
+{
+  "id": "aaa1",
+  "price": 4.54,
+  "name": "5234"
+}
+
+###
+# Get an item, a 404 is expected
+GET http://localhost:8080/api/v1/items/zzz
+Content-Type: application/json
+
+
+###
+#Get an item with a reverse name
+GET http://localhost:8080/api/v1/items/aaa2/reverse
+Content-Type: application/json
+
+#
+{
+  "id": "aaa2",
+  "price": 2.54,
+  "name": "5323"
+}
+
+###
+#Get an item with a reverse name, a 404 is expected
+GET http://localhost:8080/api/v1/items/zzzz/reverse
+Content-Type: application/json
+
+
+###
+#Get all items
+GET http://localhost:8080/api/v1/items
+Content-Type: application/json
+
+#
+[
+    {"id":"aaa1", "price":4.54, "name":"5234"},
+    {"id":"aaa2", "price":2.54, "name":"3235"},
+    {"id":"aaa3", "price":1.54, "name":"1236"},
+    {"id":"aaa4", "price":3.54, "name":"5237"},
+    {"id":"aaa5", "price":5.66, "name":"2456"},
+    {"id":"aaa6", "price":5.66, "name":"1234"}
+]
+
+###
+#Get all items with a reverse name
+GET http://localhost:8080/api/v1/items/reverse
+Content-Type: application/json
+
+#
+
+[
+    {"id":"aaa1", "price":4.54, "name":"4325"},
+    {"id":"aaa2", "price":2.54, "name":"5323"},
+    {"id":"aaa3", "price":1.54, "name":"6321"},
+    {"id":"aaa4", "price":3.54, "name":"7325"},
+    {"id":"aaa5", "price":5.66, "name":"6542"},
+    {"id":"aaa6", "price":5.66, "name":"4321"}
+]
+
+
+###
+#Get all items with sort items (price asc, name asc)
+GET http://localhost:8080/api/v1/items/sort
+Content-Type: application/json
+
+#
+[
+    {"id":"aaa3", "price":1.54, "name":"1236"},
+    {"id":"aaa2", "price":2.54, "name":"3235"},
+    {"id":"aaa4", "price":3.54, "name":"5237"},
+    {"id":"aaa1", "price":4.54, "name":"5234"},
+    {"id":"aaa6", "price":5.66, "name":"1234"},
+    {"id":"aaa5", "price":5.66, "name":"2456"}
+]
+
+
+###
+#Get items by page size, please test all parameters
+GET http://localhost:8080/api/v1/items/iterate?page=1&pageSize=2&sort=false&reverseName=true
+Content-Type: application/json
+
+#
+[
+  { "id": "aaa1", "price": 4.54, "name": "4325"},
+  { "id": "aaa2", "price": 2.54, "name": "5323"}
+]
+
+###
+#Test a throw exception, please call it 2 times, each time an exception is expected
+GET http://localhost:8080/api/v1/throwException
+Content-Type: application/json
+
+
+###
+# Call it at least 5 times in a raw (so without any pause between calls), at the end we had to get 10
+POST http://localhost:8080/api/v1/incInt/myInt
+Content-Type: application/json
+
+#expected 1 to 5, result will be a 409 for most of the calls
+
+
+###
+#Test a keys cypher
+POST http://localhost:8080/api/v1/keys
+Content-Type: text/plain
+
+encryptB64:SK3anS7wc2rAE1wJNL6UKvNgyPCZPrbQQfW9ITRKpgE=
+
+###expected
+98765432109876543210
