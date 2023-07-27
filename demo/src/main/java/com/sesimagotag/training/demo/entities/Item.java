@@ -3,23 +3,22 @@ package com.sesimagotag.training.demo.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+@Builder(toBuilder = true)
+@Data
 public class Item implements Serializable {
     private String id;
     private BigDecimal price;
     private String name;
 
-    public Item(Item item) {
-        this.id = item.id;
-        this.price = new BigDecimal(item.price.toString());
-        this.name = item.name;
-    }
+//    /**
+//     * Copy constructor to create a shallow copy of Item object
+//     * @param item
+//     */
+//    public Item(Item item) {
+//        this.id = item.id;
+//        this.price = new BigDecimal(item.price.toString());
+//        this.name = item.name;
+//    }
 }
